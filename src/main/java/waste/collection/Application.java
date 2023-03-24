@@ -1,13 +1,11 @@
-package wastecollection;
+package waste.collection;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class CollectionApplication {
-
+public class Application {
 	public static void main(String[] args) {
-		SpringApplication.run(CollectionApplication.class, args);
+		SpringApplication.run(Application.class, args);
 	}
-
 }
