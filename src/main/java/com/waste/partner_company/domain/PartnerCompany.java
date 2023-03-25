@@ -1,16 +1,13 @@
 package com.waste.partner_company.domain;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 import java.time.LocalDate;
 
 @Entity
 public class PartnerCompany {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(length = 32)
@@ -22,6 +19,13 @@ public class PartnerCompany {
     private String businessName;
 
     protected PartnerCompany() {}
+
+    public PartnerCompany(String name, String location, LocalDate startedAt, String businessName) {
+        this.name = name;
+        this.location = location;
+        this.startedAt = startedAt;
+        this.businessName = businessName;
+    }
 
     public Long getId() {
         return id;
