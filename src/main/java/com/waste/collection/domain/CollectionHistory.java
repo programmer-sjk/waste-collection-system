@@ -18,4 +18,34 @@ public class CollectionHistory {
     private int thumbnailCount;
     private String note;
     private LocalDateTime collectedAt;
+
+    protected CollectionHistory() {}
+
+    public Long getId() {
+        return id;
+    }
+
+    public Long getPartnerCompanyId() {
+        return partnerCompanyId;
+    }
+
+    public int getAmount() {
+        return amount;
+    }
+
+    public int getBoxCount() {
+        return boxCount;
+    }
+
+    public int getThumbnailCount() {
+        return thumbnailCount;
+    }
+
+    public String getNote() {
+        return note;
+    }
+
+    public LocalDateTime getCollectedAt() {
+        return collectedAt;
+    }
 }

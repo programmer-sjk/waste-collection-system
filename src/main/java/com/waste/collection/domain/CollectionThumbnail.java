@@ -6,8 +6,6 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 
-import java.time.LocalDateTime;
-
 @Entity
 public class CollectionThumbnail extends BaseEntity {
     @Id
@@ -18,4 +16,22 @@ public class CollectionThumbnail extends BaseEntity {
     @Column(length = 16)
     private String extension;
     private Long historyId;
+
+    protected CollectionThumbnail() {}
+
+    public Long getId() {
+        return id;
+    }
+
+    public String getFilePath() {
+        return filePath;
+    }
+
+    public String getExtension() {
+        return extension;
+    }
+
+    public Long getHistoryId() {
+        return historyId;
+    }
 }

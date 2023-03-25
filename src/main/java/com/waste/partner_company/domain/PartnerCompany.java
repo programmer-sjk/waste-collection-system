@@ -20,4 +20,26 @@ public class PartnerCompany {
     private LocalDate startedAt;
     @Column(length = 32, unique = true)
     private String businessName;
+
+    protected PartnerCompany() {}
+
+    public Long getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public LocalDate getStartedAt() {
+        return startedAt;
+    }
+
+    public String getBusinessName() {
+        return businessName;
+    }
 }
