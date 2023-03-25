@@ -23,7 +23,7 @@ CREATE TABLE partner_company (
     id  BIGINT NOT NULL AUTO_INCREMENT,
     name varchar(32) NOT NULL,
     location varchar(16) NOT NULL,
-    started_at TIMESTAMP NOT NULL,
+    started_at DATE NOT NULL,
     business_name varchar(32) NOT NULL,
     PRIMARY KEY (id)
 );
