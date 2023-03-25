@@ -25,5 +25,6 @@ CREATE TABLE partner_company (
     location VARCHAR(16) NOT NULL,
     started_at DATE NOT NULL,
     business_name VARCHAR(32) NOT NULL,
-    PRIMARY KEY (id)
+    PRIMARY KEY (id),
+    UNIQUE (business_name)
 );
