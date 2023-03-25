@@ -41,4 +41,45 @@ public class PartnerCompanyRequest {
     public String getBusinessName() {
         return businessName;
     }
+
+
+    public static final class Builder {
+        private String name;
+        private String location;
+        private LocalDate startedAt;
+        private String businessName;
+
+        public static Builder builder() {
+            return new Builder();
+        }
+
+        public Builder name(String name) {
+            this.name = name;
+            return this;
+        }
+
+        public Builder location(String location) {
+            this.location = location;
+            return this;
+        }
+
+        public Builder startedAt(LocalDate startedAt) {
+            this.startedAt = startedAt;
+            return this;
+        }
+
+        public Builder businessName(String businessName) {
+            this.businessName = businessName;
+            return this;
+        }
+
+        public PartnerCompanyRequest build() {
+            PartnerCompanyRequest partnerCompanyRequest = new PartnerCompanyRequest();
+            partnerCompanyRequest.startedAt = this.startedAt;
+            partnerCompanyRequest.location = this.location;
+            partnerCompanyRequest.name = this.name;
+            partnerCompanyRequest.businessName = this.businessName;
+            return partnerCompanyRequest;
+        }
+    }
 }
