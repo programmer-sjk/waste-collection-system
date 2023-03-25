@@ -1,4 +1,4 @@
-package waste.collection.common;
+package com.waste.common;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.EntityListeners;

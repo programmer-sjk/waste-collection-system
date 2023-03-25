@@ -11,8 +11,8 @@ CREATE TABLE collection_history (
 
 CREATE TABLE collection_thumbnail (
     id  BIGINT NOT NULL AUTO_INCREMENT,
-    file_path varchar NOT NULL,
-    extension varchar(16) NOT NULL,
+    file_path VARCHAR NOT NULL,
+    extension VARCHAR(16) NOT NULL,
     history_id BIGINT NOT NULL,
     created_at TIMESTAMP NOT NULL,
     updated_at TIMESTAMP NOT NULL,
@@ -21,9 +21,9 @@ CREATE TABLE collection_thumbnail (
 
 CREATE TABLE partner_company (
     id  BIGINT NOT NULL AUTO_INCREMENT,
-    name varchar(32) NOT NULL,
-    location varchar(16) NOT NULL,
+    name VARCHAR(32) NOT NULL,
+    location VARCHAR(16) NOT NULL,
     started_at DATE NOT NULL,
-    business_name varchar(32) NOT NULL,
+    business_name VARCHAR(32) NOT NULL,
     PRIMARY KEY (id)
 );
