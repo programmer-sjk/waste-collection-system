@@ -16,10 +16,6 @@ public class PartnerCompanyService {
         this.partnerCompanyRepository = partnerCompanyRepository;
     }
 
-    public List<PartnerCompany> findAll() {
-        return partnerCompanyRepository.findAll();
-    }
-
     public void register(PartnerCompanyRequest request) {
         partnerCompanyRepository.save(request.toEntity());
     }
