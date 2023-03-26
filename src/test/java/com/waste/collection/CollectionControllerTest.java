@@ -96,7 +96,7 @@ class CollectionControllerTest extends AcceptanceTest {
                 .then().log().all()
                 .extract()
                 .jsonPath()
-                .getList(".", CollectionHistoryResponse.class);
+                .getList("data", CollectionHistoryResponse.class);
     }
 
     private List<CollectionWithThumbnailResponse> findAllByCollectedAt(LocalDate collectedAt) {
