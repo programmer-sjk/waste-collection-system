@@ -19,4 +19,15 @@ public class CollectionHistoryFactory {
                 .collectedAt(LocalDateTime.now())
                 .build();
     }
+
+    public static CollectionHistory createWithPartnerCompany(Long partnerCompanyId) {
+        return new CollectionHistory.Builder()
+                .partnerCompanyId(partnerCompanyId)
+                .amount(10)
+                .boxCount(1)
+                .thumbnailCount(5)
+                .note("note")
+                .collectedAt(LocalDateTime.now())
+                .build();
+    }
 }

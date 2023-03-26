@@ -8,6 +8,10 @@ import java.time.LocalDate;
 public class PartnerCompanyFactory {
     private PartnerCompanyFactory() {}
 
+    public static PartnerCompany create(String name) {
+        return new PartnerCompany(name, "location", LocalDate.now(), "businessName");
+    }
+
     public static PartnerCompanyRequest createRequest(String name, String businessName) {
         return new PartnerCompanyRequest.Builder()
                 .name(name)

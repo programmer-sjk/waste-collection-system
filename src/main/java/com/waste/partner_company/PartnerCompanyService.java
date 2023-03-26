@@ -1,6 +1,5 @@
 package com.waste.partner_company;
 
-import com.waste.partner_company.domain.PartnerCompany;
 import com.waste.partner_company.dto.CollectionAmountResponse;
 import com.waste.partner_company.dto.PartnerCompanyRequest;
 import org.springframework.stereotype.Service;
@@ -17,7 +16,7 @@ public class PartnerCompanyService {
         this.partnerCompanyRepository = partnerCompanyRepository;
     }
 
-    public List<CollectionAmountResponse> find(Long id) {
+    public List<CollectionAmountResponse> findAllWithAmount(Long id) {
         return partnerCompanyRepository.findAllWithHistoryAmount(id);
     }
 

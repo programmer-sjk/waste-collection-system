@@ -1,7 +1,6 @@
 package com.waste.partner_company;
 
 import com.waste.common.ResponseMessage;
-import com.waste.partner_company.domain.PartnerCompany;
 import com.waste.partner_company.dto.CollectionAmountResponse;
 import com.waste.partner_company.dto.PartnerCompanyRequest;
 import jakarta.validation.Valid;
@@ -19,8 +18,8 @@ public class PartnerCompanyController {
     }
 
     @GetMapping("/{id}")
-    public ResponseMessage<List<CollectionAmountResponse>> find(@PathVariable Long id) {
-        List<CollectionAmountResponse> results = partnerCompanyService.find(id);
+    public ResponseMessage<List<CollectionAmountResponse>> findAllWithAmount(@PathVariable Long id) {
+        List<CollectionAmountResponse> results = partnerCompanyService.findAllWithAmount(id);
         return ResponseMessage.ok(results);
     }
 
