@@ -10,8 +10,7 @@ public class CollectionThumbnail extends BaseEntity {
     private Long id;
 
     private String filePath;
-    @Column(length = 16)
-    @Enumerated(EnumType.STRING)
+    @Convert(converter = ExtensionConverter.class)
     private ThumbnailExtension extension;
     private Long historyId;
 
