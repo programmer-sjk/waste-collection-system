@@ -19,14 +19,16 @@ public class CollectionController {
     }
 
     @GetMapping("/history")
-    public List<CollectionHistoryResponse> findAll(Pageable pageable) {
-        return collectionService.findAllHistory(pageable);
+    public ResponseMessage<List<CollectionHistoryResponse>> findAll(Pageable pageable) {
+        List<CollectionHistoryResponse> responses = collectionService.findAllHistory(pageable);
+        return ResponseMessage.ok(responses);
     }
 
     @GetMapping()
     public ResponseMessage<List<CollectionWithThumbnailResponse>> findAllByCollectedAt(
             @RequestParam LocalDate collectedAt
     ) {
-        return ResponseMessage.ok(collectionService.findAllByCollectedAt(collectedAt));
+        List<CollectionWithThumbnailResponse> responses = collectionService.findAllByCollectedAt(collectedAt);
+        return ResponseMessage.ok(responses);
     }
 }
