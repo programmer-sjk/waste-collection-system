@@ -14,8 +14,8 @@ public interface CollectionHistoryRepository extends JpaRepository<CollectionHis
     @Query(value = """
         SELECT new com.waste.collection.dto.CollectionWithThumbnailResponse(
             p.name, h.collectedAt, t.filePath, p.location, p.businessName, h.amount, h.boxCount
-        ) 
-        FROM CollectionHistory h 
+        )
+        FROM CollectionHistory h
         INNER JOIN PartnerCompany p ON p.id = h.partnerCompanyId
         LEFT JOIN CollectionThumbnail t ON t.historyId = h.id
         WHERE h.collectedAt BETWEEN :startedAt AND :endedAt

@@ -12,8 +12,8 @@ import java.util.List;
 @Repository
 public interface PartnerCompanyRepository extends JpaRepository<PartnerCompany, Long> {
     @Query(value = """
-        SELECT new com.waste.partner_company.dto.CollectionAmountResponse(p.name, p.location, c.amount, c.boxCount) 
-        FROM PartnerCompany p 
+        SELECT new com.waste.partner_company.dto.CollectionAmountResponse(p.name, p.location, c.amount, c.boxCount)
+        FROM PartnerCompany p
         INNER JOIN CollectionHistory c ON c.partnerCompanyId = p.id
         WHERE p.id = :id
     """)
