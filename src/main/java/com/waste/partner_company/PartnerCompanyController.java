@@ -2,6 +2,7 @@ package com.waste.partner_company;
 
 import com.waste.common.ResponseMessage;
 import com.waste.partner_company.domain.PartnerCompany;
+import com.waste.partner_company.dto.CollectionAmountResponse;
 import com.waste.partner_company.dto.PartnerCompanyRequest;
 import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.*;
@@ -15,6 +16,12 @@ public class PartnerCompanyController {
 
     public PartnerCompanyController(PartnerCompanyService partnerCompanyService) {
         this.partnerCompanyService = partnerCompanyService;
+    }
+
+    @GetMapping("/{id}")
+    public ResponseMessage<List<CollectionAmountResponse>> find(@PathVariable Long id) {
+        List<CollectionAmountResponse> results = partnerCompanyService.find(id);
+        return ResponseMessage.ok(results);
     }
 
     @PostMapping()

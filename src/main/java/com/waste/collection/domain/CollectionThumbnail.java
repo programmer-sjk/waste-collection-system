@@ -1,10 +1,7 @@
 package com.waste.collection.domain;
 
 import com.waste.common.BaseEntity;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 @Entity
 public class CollectionThumbnail extends BaseEntity {
@@ -14,7 +11,8 @@ public class CollectionThumbnail extends BaseEntity {
 
     private String filePath;
     @Column(length = 16)
-    private String extension;
+    @Enumerated(EnumType.STRING)
+    private ThumbnailExtension extension;
     private Long historyId;
 
     protected CollectionThumbnail() {}
@@ -27,7 +25,7 @@ public class CollectionThumbnail extends BaseEntity {
         return filePath;
     }
 
-    public String getExtension() {
+    public ThumbnailExtension getExtension() {
         return extension;
     }
 
