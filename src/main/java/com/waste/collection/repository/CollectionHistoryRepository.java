@@ -17,7 +17,7 @@ public interface CollectionHistoryRepository extends JpaRepository<CollectionHis
         ) 
         FROM CollectionHistory h 
         INNER JOIN PartnerCompany p ON p.id = h.partnerCompanyId
-        INNER JOIN CollectionThumbnail t ON t.historyId = h.id
+        LEFT JOIN CollectionThumbnail t ON t.historyId = h.id
         WHERE h.collectedAt BETWEEN :startedAt AND :endedAt
     """)
     List<CollectionWithThumbnailResponse> findAllByCollectedAtBetween(LocalDateTime startedAt, LocalDateTime endedAt);
