@@ -1,13 +1,11 @@
 package com.waste.collection.dto;
 
-import com.waste.collection.domain.CollectionHistory;
-
 import java.time.LocalDateTime;
 
 public class CollectionWithThumbnailResponse {
     private String companyName;
     private LocalDateTime collectedAt;
-    private ThumbnailResponse response;
+    private ThumbnailResponse thumbnail;
 
     private CollectionWithThumbnailResponse() {}
 
@@ -22,7 +20,7 @@ public class CollectionWithThumbnailResponse {
     ) {
         this.companyName = companyName;
         this.collectedAt = collectedAt;
-        this.response = new ThumbnailResponse(filePath, location, businessName, amount, boxCount);
+        this.thumbnail = new ThumbnailResponse(filePath, location, businessName, amount, boxCount);
     }
 
     public String getCompanyName() {
@@ -33,7 +31,7 @@ public class CollectionWithThumbnailResponse {
         return collectedAt;
     }
 
-    public ThumbnailResponse getResponse() {
-        return response;
+    public ThumbnailResponse getThumbnail() {
+        return thumbnail;
     }
 }

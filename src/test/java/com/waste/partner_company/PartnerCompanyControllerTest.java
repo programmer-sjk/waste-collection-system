@@ -14,6 +14,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -31,7 +32,7 @@ class PartnerCompanyControllerTest extends AcceptanceTest {
         // given
         PartnerCompany partnerCompany = partnerCompanyRepository.save(PartnerCompanyFactory.create("버거킹"));
         CollectionHistory history = collectionHistoryRepository.save(
-                CollectionHistoryFactory.createWithPartnerCompany(partnerCompany.getId())
+                CollectionHistoryFactory.createWithPartnerCompany(partnerCompany.getId(), LocalDateTime.now())
         );
 
         // when

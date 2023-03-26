@@ -14,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.dao.DataIntegrityViolationException;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -41,7 +42,7 @@ class PartnerCompanyServiceTest {
         // given
         PartnerCompany partnerCompany = partnerCompanyRepository.save(PartnerCompanyFactory.create("버거킹"));
         CollectionHistory history = collectionHistoryRepository.save(
-                CollectionHistoryFactory.createWithPartnerCompany(partnerCompany.getId())
+                CollectionHistoryFactory.createWithPartnerCompany(partnerCompany.getId(), LocalDateTime.now())
         );
 
         // when

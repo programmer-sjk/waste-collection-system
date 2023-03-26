@@ -3,6 +3,7 @@ package com.waste.collection;
 import com.waste.AcceptanceTest;
 import com.waste.collection.domain.CollectionHistory;
 import com.waste.collection.dto.CollectionHistoryResponse;
+import com.waste.collection.dto.CollectionWithThumbnailResponse;
 import com.waste.collection.repository.CollectionHistoryRepository;
 import com.waste.fixture.CollectionHistoryFactory;
 import com.waste.fixture.PartnerCompanyFactory;
@@ -17,6 +18,8 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -24,6 +27,9 @@ import static org.assertj.core.api.Assertions.assertThat;
 class CollectionControllerTest extends AcceptanceTest {
     @Autowired
     private CollectionHistoryRepository collectionHistoryRepository;
+
+    @Autowired
+    private PartnerCompanyRepository partnerCompanyRepository;
 
     @DisplayName("수거 이력정보를 조회할 수 있다.")
     @Test
@@ -62,6 +68,26 @@ class CollectionControllerTest extends AcceptanceTest {
         assertThat(results.get(0).getId()).isEqualTo(expect.getId());
     }
 
+    @DisplayName("수거 시간에 해당하는 이력과 수거 사진 정보를 조회할 수 있다.")
+    @Test
+    void findAllByCollectedAt() {
+        // given
+        PartnerCompany company = partnerCompanyRepository.save(PartnerCompanyFactory.create("맘스터치"));
+        Long companyId = company.getId();
+
+        LocalDateTime today = LocalDateTime.now();
+        LocalDateTime yesterday = today.minusDays(1);
+
+        collectionHistoryRepository.save(CollectionHistoryFactory.createWithPartnerCompany(companyId, today));
+        collectionHistoryRepository.save(CollectionHistoryFactory.createWithPartnerCompany(companyId, yesterday));
+
+        // when
+        List<CollectionWithThumbnailResponse> results = findAllByCollectedAt(LocalDate.now());
+
+        // then
+        assertThat(results).hasSize(1);
+    }
+
     private List<CollectionHistoryResponse> findAll(int page, int size) {
         return RestAssured
                 .given().log().all()
@@ -71,5 +97,16 @@ class CollectionControllerTest extends AcceptanceTest {
                 .extract()
                 .jsonPath()
                 .getList(".", CollectionHistoryResponse.class);
+    }
+
+    private List<CollectionWithThumbnailResponse> findAllByCollectedAt(LocalDate collectedAt) {
+        return RestAssured
+                .given().log().all()
+                .contentType(MediaType.APPLICATION_JSON_VALUE)
+                .when().get(String.format("/collection?collectedAt=%s", collectedAt))
+                .then().log().all()
+                .extract()
+                .jsonPath()
+                .getList("data", CollectionWithThumbnailResponse.class);
     }
 }
